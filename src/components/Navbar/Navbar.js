@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import {
-	selectBoardsByRecent,
-	selectStarredBoards,
-} from "../../features/board/boardsSlice";
-import { StyledPopover } from "../styledComponents/common";
+// import { useSelector } from "react-redux";
+// import {
+// 	selectBoardsByRecent,
+// 	selectStarredBoards,
+// } from "../../features/board/boardsSlice";
+// import { StyledPopover } from "../styledComponents/common";
 import { StyledNavCtn, StyledNav } from "../styledComponents/navbar";
+import RecentPopover from "./RecentPopover";
+import StarredPopover from "./StarredPopover";
 
 function Navbar() {
-	const boardsByRecent = useSelector(selectBoardsByRecent);
+	// const boardsByRecent = useSelector(selectBoardsByRecent);
 	// console.log(boardsByRecent);
-	const starredBoards = useSelector(selectStarredBoards);
+	// const starredBoards = useSelector(selectStarredBoards);
 
 	const [popOver, setPopOver] = useState([
 		{
@@ -73,21 +75,7 @@ function Navbar() {
 						data-state={`${popOver[0].state ? "active" : ""}`}
 					>
 						Recent
-						<StyledPopover
-							className="top-left"
-							data-state={`${popOver[0].state ? "open" : ""}`}
-							onClick={(e) => e.stopPropagation()}
-						>
-							<h4>Recent Boards</h4>
-
-							<div>
-								{boardsByRecent.length === 0 ? (
-									<i>Nothing to show here</i>
-								) : (
-									boardsByRecent.map
-								)}
-							</div>
-						</StyledPopover>
+						<RecentPopover isOpen={popOver[0].state} />
 					</li>
 					<li
 						id="nav-btn-2"
@@ -99,21 +87,7 @@ function Navbar() {
 						data-state={`${popOver[1].state ? "active" : ""}`}
 					>
 						Starred
-						<StyledPopover
-							className="top-left"
-							data-state={`${popOver[1].state ? "open" : ""}`}
-							onClick={(e) => e.stopPropagation()}
-						>
-							<h4>Starred Boards</h4>
-
-							<div>
-								{starredBoards.length === 0 ? (
-									<i>Nothing to show here</i>
-								) : (
-									starredBoards.map
-								)}
-							</div>
-						</StyledPopover>
+						<StarredPopover isOpen={popOver[1].state}/>
 					</li>
 				</ul>
 			</StyledNav>
