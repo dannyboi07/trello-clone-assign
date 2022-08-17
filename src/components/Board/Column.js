@@ -3,11 +3,13 @@ import { useDispatch } from "react-redux";
 import {
 	StyledBoardBtn,
 	StyledBoardColumn,
-	StyledBoardCtn,
+	// StyledBoardCtn,
 } from "../styledComponents/board";
 import dotsHoriz from "../../assets/dots-horiz.svg";
 import ColumnItem from "./ColumnItem";
-import { changeColumnName } from "../../features/board/boardItemsSlice";
+import { changeColumnName, createNewItem } from "../../features/board/boardItemsSlice";
+import addIconSvg from "../../assets/add-icon.svg";
+import closeSvg from "../../assets/close-cross.svg";
 
 function Column({
 	boardId,
@@ -16,10 +18,12 @@ function Column({
 	boardItems,
 	handleColumnDrag,
 	handleColumnDragEnd,
-    handleColumnDrop
+	handleColumnDrop,
 }) {
 	const dispatch = useDispatch();
 	const [colName, setColName] = useState(colTitle);
+	const [addItemState, setAddItemState] = useState(false);
+	const [newItemTitle, setNewItemTitle] = useState("");
 	// console.log(boardItems[0].activity);
 
 	function handleColNameChange(e) {
@@ -34,6 +38,14 @@ function Column({
 			);
 		}
 	}
+
+    function handleNewItem() {
+        dispatch(createNewItem({
+            boardId,
+            col_id: colId,
+            newItemTitle
+        }))
+    }
 
 	function handleDragStart(e) {
 		e.target.style.opacity = 1;
@@ -50,7 +62,7 @@ function Column({
 			// onDragEnd={handleColumnDrag}
 			// onDragEnter={handleColumnDrag}
 			onDragOver={handleColumnDragEnd}
-            onDrop={handleColumnDrop}
+			onDrop={handleColumnDrop}
 			data-type="column"
 			// key={colId}
 			// tabIndex="0"
@@ -88,6 +100,33 @@ function Column({
 					/>
 				))}
 			{/* </div> */}
+
+			{addItemState ? (
+				<div className="add-item">
+					<textarea
+						value={newItemTitle}
+						onChange={(e) => setNewItemTitle(e.target.value)}
+						placeholder="Enter a title for this card..."
+					/>
+
+					<div>
+						<StyledBoardBtn
+                        onClick={handleNewItem}>Add Card</StyledBoardBtn>
+
+						<StyledBoardBtn onClick={() => setAddItemState(false)}>
+							<img src={closeSvg} alt="Close" />
+						</StyledBoardBtn>
+					</div>
+				</div>
+			) : (
+				<StyledBoardBtn
+					className="add-item-btn"
+					onClick={() => setAddItemState(true)}
+				>
+					<img src={addIconSvg} alt="Add Icon" />
+					Add a card
+				</StyledBoardBtn>
+			)}
 		</StyledBoardColumn>
 	);
 }

@@ -147,7 +147,7 @@ export const boardItemsSlice = createSlice({
 							colId === action.payload.idOne ||
 							colId === action.payload.idTwo
 						) {
-                            // console.log("found Col", origElemIdx);
+							// console.log("found Col", origElemIdx);
 							if (origElemIdx === null) {
 								origElemIdx = j;
 							} else {
@@ -172,6 +172,29 @@ export const boardItemsSlice = createSlice({
 
 			return res;
 		},
+		createNewItem: (state, action) => {
+			console.log("reducer", action.payload, state);
+			const res = state.map((obj) =>
+				obj.boardId === action.payload.boardId
+					? {
+							...obj,
+							columns: obj.columns.map((column) =>
+								column.col_id === action.payload.col_id
+									? {
+											...column,
+											items: [
+												...column.items,
+												action.payload.newItem,
+											],
+									  }
+									: column,
+							),
+					  }
+					: obj,
+			);
+			console.log(res);
+			return res;
+		},
 	},
 });
 
@@ -182,6 +205,7 @@ export const {
 	changeItemTitle,
 	changeItemDescription,
 	switchBoardColumns,
+	createNewItem,
 } = boardItemsSlice.actions;
 
 export const selectBoardsItems = (boardId) => (state) => {
@@ -197,18 +221,16 @@ export const selectBoardsItems = (boardId) => (state) => {
 export const selectColumnItem =
 	({ boardId, colId, itemId }) =>
 	(state) => {
-		// console.log(boardId, colId, itemId);
 		if (!boardId && !colId && !itemId) return;
 
 		for (let i = 0; i < state.boardItems.length; i++) {
 			if (state.boardItems[i].boardId === boardId) {
 				for (let j = 0; j < state.boardItems[i].columns.length; j++) {
-					// console.log(state.boardItems[i].columns[j].col_id, colId);
 					if (state.boardItems[i].columns[j].col_id === colId) {
 						for (
 							let k = 0;
 							k < state.boardItems[i].columns[j].items.length;
-							j++
+							k++
 						) {
 							if (
 								state.boardItems[i].columns[j].items[k]

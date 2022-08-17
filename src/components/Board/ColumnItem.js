@@ -17,8 +17,6 @@ function ColumnItem({
 	const { boardId } = useParams();
 	const itemRef = useRef(null);
 
-	// console.log(itemWatch, itemActivity);
-
 	function handleEditItemTitle() {
 		if (itemRef.current) {
 			const boundingDims = itemRef.current.getBoundingClientRect();
@@ -55,7 +53,12 @@ function ColumnItem({
 	}
 
 	return (
-		<StyledBoardColItem data-type="item" onClick={handleEditItem} ref={itemRef}>
+		<StyledBoardColItem
+            draggable
+			data-type="item"
+			onClick={handleEditItem}
+			ref={itemRef}
+		>
 			<div>
 				<p>{itemTitle}</p>
 			</div>
@@ -66,7 +69,7 @@ function ColumnItem({
 					padding: "0.6em",
 				}}
 				onClick={(e) => {
-                    e.stopPropagation();
+					e.stopPropagation();
 					handleEditItemTitle();
 				}}
 			>

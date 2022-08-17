@@ -29,7 +29,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input, textarea {
+input, textarea, button {
     font-family: "Noto Sans", sans-serif;
 }
 

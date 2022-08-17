@@ -202,7 +202,7 @@ const writeToLocalStorageMiddleware =
 					]),
 				);
 			} else if (action.type?.endsWith("changeItemDescription")) {
-                console.log("middleware");
+				console.log("middleware");
 				localStorage.setItem(
 					"trello-clone-board-items",
 					JSON.stringify([
@@ -237,6 +237,86 @@ const writeToLocalStorageMiddleware =
 						),
 					]),
 				);
+			} else if (action.type?.endsWith("switchBoardColumns")) {
+				const state = getState().boardItems;
+
+				let origElemIdx = null;
+				const res = [];
+				for (let i = 0; i < state.length; i++) {
+					const resCols = [];
+					if (state[i].boardId === action.payload.boardId) {
+						for (let j = 0; j < state[i].columns.length; j++) {
+							const colId = state[i].columns[j].col_id;
+							if (
+								colId === action.payload.idOne ||
+								colId === action.payload.idTwo
+							) {
+								if (origElemIdx === null) {
+									origElemIdx = j;
+								} else {
+									const temp = state[i].columns[j];
+
+									resCols.push(state[i].columns[origElemIdx]);
+									resCols[origElemIdx] = temp;
+									continue;
+								}
+							}
+
+							resCols.push(state[i].columns[j]);
+						}
+					}
+					res.push({
+						...state[i],
+						columns:
+							resCols.length > 0 ? resCols : state[i].columns,
+					});
+				}
+
+				localStorage.setItem(
+					"trello-clone-board-items",
+					JSON.stringify(res),
+				);
+			} else if (action.type?.endsWith("createNewItem")) {
+				console.log("midware");
+				const newItemWithId = {
+					item_id: uuidv4(),
+					title: action.payload.newItemTitle,
+					description: "",
+					isWatched: false,
+					activity: [
+						{
+							act_id: uuidv4(),
+							type: "update",
+							time: Date.now(),
+						},
+					],
+				};
+				localStorage.setItem(
+					"trello-clone-board-items",
+					JSON.stringify([
+						...getState().boardItems.map((obj) =>
+							obj.boardId === action.payload.boardId
+								? {
+										...obj,
+										columns: obj.columns.map((column) =>
+											column.col_id ===
+											action.payload.col_id
+												? {
+														...column,
+														items: [
+															...column.items,
+															newItemWithId,
+														],
+												  }
+												: column,
+										),
+								  }
+								: obj,
+						),
+					]),
+				);
+
+				action.payload.newItem = newItemWithId;
 			}
 		}
 

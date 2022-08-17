@@ -14,28 +14,20 @@ function Board() {
 	const boardItems = useSelector(selectBoardsItems(boardId));
     const draggedElemRef = useRef(null);
 
-	// const [colName, setColName] = useState("");
-
-	// console.log(boardItems);
+	console.log(boardItems);
 
 	// function changeColName(e) {}
 
     function handleColumnDrag(e) {
-        // console.log(e, e.target.getBoundingClientRect(), e.currentTarget, e.relatedTarget, e.target)
-        // if (e.currentTarget !== e.target) {
-        //     e.preventDefault();
-        // }
         draggedElemRef.current = {
             type: e.currentTarget.dataset?.type,
             id: e.currentTarget.id
         }
         console.log("dragstart", draggedElemRef.current)
-        // e.preventDefault();
     }
 
     function handleColumnDragEnd(e) {
         e.preventDefault();
-        // console.log(e, e.currentTarget)
     }
 
     function handleColumnDrop(e) {
