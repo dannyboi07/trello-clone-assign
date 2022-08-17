@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import {
 	StyledBoardBtn,
@@ -7,7 +7,10 @@ import {
 } from "../styledComponents/board";
 import dotsHoriz from "../../assets/dots-horiz.svg";
 import ColumnItem from "./ColumnItem";
-import { changeColumnName, createNewItem } from "../../features/board/boardItemsSlice";
+import {
+	changeColumnName,
+	createNewItem,
+} from "../../features/board/boardItemsSlice";
 import addIconSvg from "../../assets/add-icon.svg";
 import closeSvg from "../../assets/close-cross.svg";
 
@@ -16,15 +19,15 @@ function Column({
 	colId,
 	colTitle,
 	boardItems,
-	handleColumnDrag,
-	handleColumnDragEnd,
-	handleColumnDrop,
+	handleBoardItemDrag,
+	handleBoardItemDragEnd,
+	handleBoardItemDrop,
 }) {
 	const dispatch = useDispatch();
 	const [colName, setColName] = useState(colTitle);
 	const [addItemState, setAddItemState] = useState(false);
 	const [newItemTitle, setNewItemTitle] = useState("");
-	// console.log(boardItems[0].activity);
+	const draggedItemRef = useRef(null);
 
 	function handleColNameChange(e) {
 		if (colName && colName !== colTitle) {
@@ -39,35 +42,38 @@ function Column({
 		}
 	}
 
-    function handleNewItem() {
-        dispatch(createNewItem({
-            boardId,
-            col_id: colId,
-            newItemTitle
-        }))
-    }
-
-	function handleDragStart(e) {
-		e.target.style.opacity = 1;
-		console.log("dragstart", e, (e.target.style.opacity = 1));
-		// e.stopPropagation();
-		// e.preventDefault();
+	function handleNewItem() {
+		dispatch(
+			createNewItem({
+				boardId,
+				col_id: colId,
+				newItemTitle,
+			}),
+		);
 	}
+
+	// function handleColItemDragStart(e) {
+	//     draggedItemRef.current = {
+	//         type: e.currentTarget.dataset?.type,
+	//         id: e.currentTarget.id,
+	//     }
+	// }
+	// function handleColItemDragDrop(e) {
+	//     e.preventDefault();
+	//     if (e.currentTarget.dataset?.type === draggedItemRef.current.type) {
+	//         dispatch
+	//     }
+	// }
 
 	return (
 		<StyledBoardColumn
 			id={colId}
 			draggable
-			onDragStart={handleColumnDrag}
-			// onDragEnd={handleColumnDrag}
-			// onDragEnter={handleColumnDrag}
-			onDragOver={handleColumnDragEnd}
-			onDrop={handleColumnDrop}
+			onDragStart={handleBoardItemDrag}
+			onDragOver={handleBoardItemDragEnd}
+			onDrop={handleBoardItemDrop}
 			data-type="column"
-			// key={colId}
-			// tabIndex="0"
 		>
-			{/* <div> */}
 			<div>
 				<textarea
 					value={colName}
@@ -97,9 +103,11 @@ function Column({
 						itemDesc={item.description}
 						itemWatch={item.isWatched}
 						itemActivity={item.activity}
+                        handleBoardItemDrag={handleBoardItemDrag}
+                        handleBoardItemDragEnd={handleBoardItemDragEnd}
+                        handleBoardItemDrop={handleBoardItemDrop}
 					/>
 				))}
-			{/* </div> */}
 
 			{addItemState ? (
 				<div className="add-item">
@@ -110,8 +118,9 @@ function Column({
 					/>
 
 					<div>
-						<StyledBoardBtn
-                        onClick={handleNewItem}>Add Card</StyledBoardBtn>
+						<StyledBoardBtn onClick={handleNewItem}>
+							Add Card
+						</StyledBoardBtn>
 
 						<StyledBoardBtn onClick={() => setAddItemState(false)}>
 							<img src={closeSvg} alt="Close" />

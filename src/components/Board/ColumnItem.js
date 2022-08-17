@@ -12,6 +12,9 @@ function ColumnItem({
 	itemDesc,
 	itemWatch,
 	itemActivity,
+    handleBoardItemDrag,
+    handleBoardItemDragEnd,
+    handleBoardItemDrop
 }) {
 	const dispatch = useDispatch();
 	const { boardId } = useParams();
@@ -54,8 +57,13 @@ function ColumnItem({
 
 	return (
 		<StyledBoardColItem
+            id={itemId}
+            onDragStart={handleBoardItemDrag}
+            onDragEnd={handleBoardItemDragEnd}
+            onDrop={handleBoardItemDrop}
             draggable
 			data-type="item"
+            data-colid={colId}
 			onClick={handleEditItem}
 			ref={itemRef}
 		>

@@ -14,12 +14,9 @@ export const StyledBoardCtn = styled.div`
 		margin-top: 1em;
 
 		display: flex;
+        flex-wrap: wrap;
 		column-gap: 0.5em;
 		/* border: 1px solid white; */
-
-		& > div {
-			border: 1px solid white;
-		}
 	}
 
 	& div,
@@ -35,8 +32,6 @@ export const StyledBoardColumn = styled.div`
 	font-size: 0.825rem;
 	background-color: var(--bg-col-active);
 
-	/* & > div { */
-	/* width: calc(100% - 1em); */
 	padding: 0.65em;
 	position: relative;
 	height: fit-content;
@@ -138,6 +133,84 @@ export const StyledBoardColumn = styled.div`
 	background-color: var(--column-col-one);
 	/* } */
 `;
+
+export const StyledNewBoardColumn = styled.div`
+    position: relative;
+    width: 272px;
+    min-height: 40px;
+    height: fit-content;
+    /* padding: 1px; */
+
+    background-color: var(--bg-col-inactive);
+
+    & > button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        column-gap: 0.5em;
+        color: white;
+        
+        backdrop-filter: blur(5px);
+    }
+
+    & > div.add-list-ctn {
+        position: absolute;
+        background-color: var(--column-col-one);
+        /* top: -25px; */
+        top: -1px;
+        left: -1px;
+        width: calc(100% - 3px);
+        /* width: 100%; */
+        height: 75px;
+
+        padding: 3px;
+
+        border: 1px solid black;
+
+        z-index: 99;
+
+        transform: scaleY(0);
+        transition: transform 0.15s;
+
+        &[data-state="open"] {
+            transform: scaleY(1);
+        }
+
+        & > textarea {
+            font-size: 0.825rem;
+            height: 1.5em;
+            width: calc(100% - 1.5em);
+
+            padding: 0.6em 0.75em 0.5em 0.75em;
+
+            resize: none;
+            outline: none;
+
+            &:focus {
+                box-shadow: inset 0 0 0 2px var(--bdr-col-active);
+            }
+        }
+
+        & > div {
+            display: flex;
+            column-gap: 0.25em;
+
+            & > button:first-child {
+                padding: 0.5em 0.75em;
+                color: white;
+                background-color: var(--bdr-col-active);
+            }
+
+            & > button:last-child {
+                padding: 0.5em 0.75em;
+            }
+        }
+    }
+
+    * {
+        /* border: 1px solid red; */
+    }
+`
 
 export const StyledBoardBtn = styled.button`
 	/* padding: 0.65em; */

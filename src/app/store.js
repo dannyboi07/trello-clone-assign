@@ -143,11 +143,33 @@ const writeToLocalStorageMiddleware =
 				);
 			}
 		} else if (action.type?.startsWith("boardItems/")) {
-			if (action.type?.endsWith("changeColumnName")) {
+			if (action.type?.endsWith("addBoardColumn")) {
+				const newCol = {
+					col_id: uuidv4(),
+					col_title: action.payload.colTitle,
+					items: [],
+				};
+
 				localStorage.setItem(
 					"trello-clone-board-items",
-					JSON.stringify([
-						...getState().boardItems.map((obj) =>
+					JSON.stringify(
+						getState().boardItems.map((obj) =>
+							obj.boardId === action.payload.boardId
+								? {
+										...obj,
+										columns: [...obj.columns, newCol],
+								  }
+								: obj,
+						),
+					),
+				);
+
+				action.payload = { boardId: action.payload.boardId, ...newCol };
+			} else if (action.type?.endsWith("changeColumnName")) {
+				localStorage.setItem(
+					"trello-clone-board-items",
+					JSON.stringify(
+						getState().boardItems.map((obj) =>
 							obj.boardId === action.payload.boardId
 								? {
 										...obj,
@@ -165,7 +187,7 @@ const writeToLocalStorageMiddleware =
 								  }
 								: obj,
 						),
-					]),
+					),
 				);
 			} else if (action.type?.endsWith("changeItemTitle")) {
 				localStorage.setItem(

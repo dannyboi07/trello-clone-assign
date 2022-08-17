@@ -1,6 +1,6 @@
 // import { useEffect } from "react";
 // import {  }
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Workspace from "./components/Workspace/Workspace";
 import "./App.css";
@@ -25,7 +25,7 @@ function App() {
 						</Route>
 						<Route path="" element={<Workspace />} />
 					</Route>
-					{/* <Route path="*" element={<Navigate to="workspace" replace/>}/> */}
+					<Route path="*" element={<Navigate to="workspace" replace/>}/>
 				</Routes>
 			</div>
 		</>
