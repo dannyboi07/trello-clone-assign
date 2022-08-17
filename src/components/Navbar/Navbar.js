@@ -1,19 +1,27 @@
 import React, { useState } from "react";
-// import { useSelector } from "react-redux";
-// import {
-// 	selectBoardsByRecent,
-// 	selectStarredBoards,
-// } from "../../features/board/boardsSlice";
-// import { StyledPopover } from "../styledComponents/common";
 import { StyledNavCtn, StyledNav } from "../styledComponents/navbar";
 import RecentPopover from "./RecentPopover";
 import StarredPopover from "./StarredPopover";
+import WorkspacesPopover from "../Workspace/WorkspacesPopover";
+
+// function NavLi() {
+// 	return (
+// 		<li
+// 			id="nav-btn-1"
+// 			onMouseEnter={handleLiHoverOver}
+// 			onMouseLeave={handleLiHoverOut}
+// 			onClick={handlePopOver}
+// 			tabIndex="-1"
+// 			onBlur={handleLiOnBlur}
+// 			data-state={`${popOver[0].state ? "active" : ""}`}
+// 		>
+// 			Recent
+// 			<RecentPopover isOpen={popOver[0].state} />
+// 		</li>
+// 	);
+// }
 
 function Navbar() {
-	// const boardsByRecent = useSelector(selectBoardsByRecent);
-	// console.log(boardsByRecent);
-	// const starredBoards = useSelector(selectStarredBoards);
-
 	const [popOver, setPopOver] = useState([
 		{
 			id: "nav-btn-1",
@@ -23,6 +31,10 @@ function Navbar() {
 			id: "nav-btn-2",
 			state: false,
 		},
+        {
+            id: "nav-btn-3",
+            state: false,
+        }
 	]);
 
 	React.useEffect(() => {
@@ -74,8 +86,8 @@ function Navbar() {
 						onBlur={handleLiOnBlur}
 						data-state={`${popOver[0].state ? "active" : ""}`}
 					>
-						Recent
-						<RecentPopover isOpen={popOver[0].state} />
+						Workspaces
+						<WorkspacesPopover isOpen={popOver[0].state} />
 					</li>
 					<li
 						id="nav-btn-2"
@@ -86,8 +98,20 @@ function Navbar() {
 						onBlur={handleLiOnBlur}
 						data-state={`${popOver[1].state ? "active" : ""}`}
 					>
+						Recent
+						<RecentPopover isOpen={popOver[1].state} />
+					</li>
+					<li
+						id="nav-btn-3"
+						onMouseEnter={handleLiHoverOver}
+						onMouseLeave={handleLiHoverOut}
+						onClick={handlePopOver}
+						tabIndex="-1"
+						onBlur={handleLiOnBlur}
+						data-state={`${popOver[2].state ? "active" : ""}`}
+					>
 						Starred
-						<StarredPopover isOpen={popOver[1].state}/>
+						<StarredPopover isOpen={popOver[2].state} />
 					</li>
 				</ul>
 			</StyledNav>

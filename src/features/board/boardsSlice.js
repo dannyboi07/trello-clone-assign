@@ -44,11 +44,17 @@ export const { addBoard, removeBoard } = boardsSlice.actions;
 
 export const selectBoards = (state) => state.boards;
 
+export const selectBoardByWorkspace = (workspaceId) => (state) =>
+	state.boards.map((board) =>
+		board.workspaceId === workspaceId ? board : null,
+	);
+
 export const selectBoardsByRecent = (state) =>
 	state.boards.sort((obj1, obj2) => obj1.last_acc >= obj2.last_acc);
 
-export const selectStarredBoards = (state) => state.boards.filter(board => board.starred === true)
+export const selectStarredBoards = (state) =>
+	state.boards.filter((board) => board.starred === true);
 
-export const selectBoard = (boardId) => (state) =>
-	state.boards.filter((board) => board.id === boardId);
+export const selectBoardById = (boardId) => (state) =>
+	state.boards.find((board) => board.id === boardId);
 export default boardsSlice.reducer;

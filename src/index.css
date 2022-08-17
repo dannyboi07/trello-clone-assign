@@ -1,3 +1,15 @@
+:root {
+    --bg-col-inactive: rgba(9, 30, 66, 0.04);
+    --bg-col-active: rgba(9, 30, 66, 0.1);
+    
+    --bdr-col-inactive: rgba(9, 30, 66, 0.2);
+    --bdr-col-active: rgb(0, 121, 191);
+
+    --column-col-one: rgb(235, 236, 240); 
+
+    --item-bg-col: rgb(255, 255, 255);
+}
+
 html {
     font-size: 18px;
 }
@@ -15,6 +27,10 @@ body {
   font-family: "Noto Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input, textarea {
+    font-family: "Noto Sans", sans-serif;
 }
 
 code {
