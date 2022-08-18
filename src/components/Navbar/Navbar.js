@@ -95,7 +95,7 @@ function Navbar() {
 						onMouseLeave={handleLiHoverOut}
 						onClick={handlePopOver}
 						tabIndex="-1"
-						onBlur={handleLiOnBlur}
+						// onBlur={handleLiOnBlur}
 						data-state={`${popOver[1].state ? "active" : ""}`}
 					>
 						Recent

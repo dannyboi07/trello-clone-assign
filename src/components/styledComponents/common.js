@@ -37,7 +37,8 @@ const StyledPopover = styled.div`
 		transform-origin: top left;
 	}
 
-	border: 1px solid black;
+	/* border: 1px solid black; */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
 	& > h4 {
 		position: relative;
@@ -65,19 +66,37 @@ const StyledPopover = styled.div`
 		font-size: 0.925rem;
 		padding: 0.75em 0.9em;
 
-		display: flex;
-		flex-direction: column;
+		& > a {
+			height: 50px;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			column-gap: 1em;
 
-		& > i {
-			align-self: center;
+			transition: background-color 0.25s;
+
+			& > i {
+				align-self: center;
+			}
+
+			& div.board-bg-img,
+			img {
+				width: 50px;
+				height: 50px;
+			}
+
+			&:hover {
+				background-color: var(--bg-col-active);
+			}
 		}
 	}
 
 	& * {
 		border-radius: 0.15em;
+		/* border: 1px solid black; */
 	}
 
-    z-index: 999999;
+	z-index: 999999;
 `;
 
 const StyledInputCtn = styled.div`
@@ -242,8 +261,8 @@ const StyledBoardBgPicker = styled.div`
 				background-repeat: no-repeat;
 
 				& > button.small-bg-choice {
-                    height: 40px;
-                    width: 64px;
+					height: 40px;
+					width: 64px;
 					background-color: transparent;
 				}
 			}

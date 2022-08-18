@@ -3,13 +3,11 @@ import useAnimation from "../features/useAnimation";
 import { StyledPopover } from "./styledComponents/common";
 
 function Popover({ className, style, title, isOpen, children }) {
-    const [isAnim, isOnDom] = useAnimation(isOpen, 25);
+	const [isAnim, isOnDom] = useAnimation(isOpen, 25);
 
-    if (!isOnDom) {
-        return (
-            <></>
-        )
-    }
+	if (!isOnDom) {
+		return <></>;
+	}
 	return (
 		<StyledPopover
 			className={className}
@@ -19,7 +17,8 @@ function Popover({ className, style, title, isOpen, children }) {
 		>
 			<h4>{title}</h4>
 
-			{children}
+			{/* <div>{children}</div> */}
+            {children}
 		</StyledPopover>
 	);
 }

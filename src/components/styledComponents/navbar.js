@@ -3,19 +3,20 @@ import arrowDown from "../../assets/arrow-down.svg"
 
 const StyledNavCtn = styled.div`
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 0.5em 1.25em;
 
     display: flex;
     align-items: center;
     column-gap: 1.5em;
     /* height: 2em */
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 `
 
 const StyledNav = styled.nav`
-    /* padding: 0.75em 1.25em; */
     width: fit-content;
-    /* border: 1px solid black; */
+    
 
     & > ul {
         display: flex;
@@ -48,6 +49,8 @@ const StyledNav = styled.nav`
             /* border: 1px solid red */
         }
     }
+
+    z-index: 999;
 `
 
 export {

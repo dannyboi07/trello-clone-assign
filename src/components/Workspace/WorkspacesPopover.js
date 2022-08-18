@@ -17,11 +17,11 @@ function WorkspacesPopover({ isOpen }) {
 					workspaces.map((workspace) => (
 						<Link key={workspace.id}
                         to={`workspace/${workspace.id}`}>
-                            <h4>
+                            <p>
                                 {
                                     workspace.title
                                 }
-                            </h4>
+                            </p>
                         </Link>
 					))
 				)}

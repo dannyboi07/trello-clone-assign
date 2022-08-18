@@ -411,7 +411,7 @@ const writeToLocalStorageMiddleware =
 					);
 				}
 
-                // localStorage.setItem("trello-clone-board-items", JSON.stringify(res));
+                localStorage.setItem("trello-clone-board-items", JSON.stringify(res));
 
                 action.payload.result = res
 			}

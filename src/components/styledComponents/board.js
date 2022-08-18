@@ -26,15 +26,18 @@ export const StyledBoardCtn = styled.div`
 	}
 `;
 export const StyledBoardColumn = styled.div`
-	position: relative;
+	/* position: relative; */
 	width: 272px;
 	height: fit-content;
 	font-size: 0.825rem;
 	background-color: var(--bg-col-active);
 
 	padding: 0.65em;
-	position: relative;
+	/* position: relative; */
 	height: fit-content;
+
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    
 	// col header ctn
 	& > div {
 		display: flex;
@@ -130,12 +133,13 @@ export const StyledBoardColumn = styled.div`
 		}
 	}
 
+
 	background-color: var(--column-col-one);
 	/* } */
 `;
 
 export const StyledNewBoardColumn = styled.div`
-    position: relative;
+    /* position: relative; */
     width: 272px;
     min-height: 40px;
     height: fit-content;
@@ -262,6 +266,8 @@ export const StyledBoardColItem = styled.div`
 			display: flex !important;
 		}
 	}
+
+    z-index: 0;
 
 	& * {
 		/* border: 1px solid black; */
