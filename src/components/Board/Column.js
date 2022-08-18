@@ -27,7 +27,7 @@ function Column({
 	const [colName, setColName] = useState(colTitle);
 	const [addItemState, setAddItemState] = useState(false);
 	const [newItemTitle, setNewItemTitle] = useState("");
-	const draggedItemRef = useRef(null);
+	// const draggedItemRef = useRef(null);
 
 	function handleColNameChange(e) {
 		if (colName && colName !== colTitle) {
@@ -50,6 +50,9 @@ function Column({
 				newItemTitle,
 			}),
 		);
+
+        setNewItemTitle("");
+        setAddItemState(false);
 	}
 
 	// function handleColItemDragStart(e) {

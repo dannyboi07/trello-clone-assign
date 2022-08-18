@@ -339,6 +339,81 @@ const writeToLocalStorageMiddleware =
 				);
 
 				action.payload.newItem = newItemWithId;
+			} else if (action.type?.endsWith("switchBoardColItems")) {
+				let toColIdx = false;
+				let fromColIdx = false;
+				let foundItem = null;
+                const state = getState().boardItems;
+				const res = [];
+
+				for (let i = 0; i < state.length; i++) {
+					let resCols = [];
+
+					if (state[i].boardId === action.payload.boardId) {
+						let colsNewItemState = [];
+
+						for (let j = 0; j < state[i].columns.length; j++) {
+							const colId = state[i].columns[j].col_id;
+
+							if (colId === action.payload.toColId) {
+								toColIdx = true;
+							} else if (colId === action.payload.fromColId) {
+								fromColIdx = true;
+								colsNewItemState = state[i].columns[
+									j
+								].items.filter(
+									(item) =>
+										item.item_id !== action.payload.itemId,
+								);
+
+								foundItem = state[i].columns[j].items.find(
+									(item) =>
+										item.item_id === action.payload.itemId,
+								);
+							}
+							resCols.push(state[i].columns[j]);
+
+							if (foundItem && toColIdx && fromColIdx) {
+								// Preferable but can't use this, Immer complains and blocks
+								// resCols[fromColIdx].items = colsNewItemState
+								// resCols[toColIdx].items = {
+								//     ...resCols[toColIdx].items,
+								//     foundItem
+								// }
+
+								// Working
+								resCols = resCols.map((resCol) =>
+									resCol.col_id === action.payload.toColId
+										? {
+												...resCol,
+												items: [
+													...resCol.items,
+													foundItem,
+												],
+										  }
+										: resCol.col_id ===
+										  action.payload.fromColId
+										? { ...resCol, items: colsNewItemState }
+										: resCol,
+								);
+
+								foundItem = null;
+								toColIdx = null;
+								fromColIdx = null;
+							}
+						}
+					}
+
+					res.push(
+						resCols.length > 0
+							? { ...state[i], columns: resCols }
+							: state[i],
+					);
+				}
+
+                // localStorage.setItem("trello-clone-board-items", JSON.stringify(res));
+
+                action.payload.result = res
 			}
 		}
 
