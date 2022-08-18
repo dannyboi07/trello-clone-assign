@@ -139,7 +139,7 @@ export const StyledBoardColumn = styled.div`
 `;
 
 export const StyledNewBoardColumn = styled.div`
-    /* position: relative; */
+    position: relative;
     width: 272px;
     min-height: 40px;
     height: fit-content;
@@ -168,8 +168,6 @@ export const StyledNewBoardColumn = styled.div`
         height: 75px;
 
         padding: 3px;
-
-        border: 1px solid black;
 
         z-index: 99;
 

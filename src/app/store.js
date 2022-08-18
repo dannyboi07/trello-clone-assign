@@ -76,7 +76,7 @@ const writeToLocalStorageMiddleware =
 	({ getState }) =>
 	(next) =>
 	(action) => {
-		if (action.type?.startsWith("boards/")) {
+		if (action.type?.startsWith("boards/")) { 
 			if (action.type?.endsWith("addBoard")) {
 				localStorage.setItem(
 					"trello-clone-boards",
@@ -90,6 +90,8 @@ const writeToLocalStorageMiddleware =
 						createNewBoardsItems(action.payload.id),
 					]),
 				);
+
+                console.log("here");
 			} else if (action.type?.endsWith("removeBoard")) {
 				localStorage.setItem(
 					"trello-clone-boards",

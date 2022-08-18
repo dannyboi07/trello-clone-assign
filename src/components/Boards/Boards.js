@@ -124,7 +124,7 @@ function Boards() {
 						></BoardBgPopover>
 					</StyledCreateBoard>
 
-					{boards &&
+					{boards && boards[0] &&
 						boards.length > 0 &&
 						boards.map((board) => (
 							<div

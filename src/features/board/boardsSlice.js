@@ -53,7 +53,7 @@ export const selectBoardsForNavbar = (workspaceId) => (state) => {
     const res = [];
     for (let i = 0; i < state.boards.length; i++) {
 
-        console.log(state.boards[i], workspaceId);
+        // console.log(state.boards[i], workspaceId);
         if (state.boards[i].workspaceId === workspaceId) {
 			res.push({
 				title: state.boards[i].title,

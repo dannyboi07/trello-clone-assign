@@ -17,6 +17,8 @@ function RecentPopover({ isOpen }) {
 
 	const recentBoards = useSelector(selectBoardsForNavbar(workspaceId));
 
+    console.log(recentBoards.length, !recentBoards[0]);
+
 	return (
 		<Popover className="top-left" title="Recent Boards" isOpen={isOpen}>
 			<div>
@@ -24,7 +26,7 @@ function RecentPopover({ isOpen }) {
 					<i>Nothing to show here</i>
 				) : (
 					recentBoards.map((board) => (
-						<StyledRouterLink key={board.id} to={``}>
+						<StyledRouterLink key={board.id} to={`workspace/${workspaceId}/board/${board.id}`}>
 							{board.boardBg.type === "img" ? (
 								<>
 									<img
@@ -34,12 +36,15 @@ function RecentPopover({ isOpen }) {
 									<p>{board.title}</p>
 								</>
 							) : (
-								<div
+                                <>
+                                    <div
 									className="board-bg-img"
 									style={{
-										backgroundColor: board.boardBg.value,
+                                        backgroundColor: board.boardBg.value,
 									}}
 								/>
+                                <p>{board.title}</p>
+                                </>
 							)}
 						</StyledRouterLink>
 					))
