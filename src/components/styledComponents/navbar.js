@@ -9,7 +9,6 @@ const StyledNavCtn = styled.div`
     display: flex;
     align-items: center;
     column-gap: 1.5em;
-    /* height: 2em */
 
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 `

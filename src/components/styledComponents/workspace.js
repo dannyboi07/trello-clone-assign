@@ -31,7 +31,6 @@ const StyledWorkspaceCtn = styled.div`
 			margin-top: 1em;
 			display: flex;
 			flex-wrap: wrap;
-            /* justify-content: space-between; */
             column-gap: 1em;
 
 			// Workspace|board ctn

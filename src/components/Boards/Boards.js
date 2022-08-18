@@ -25,8 +25,6 @@ const newBoardDets = {
 		value: boardBgColors[0],
 	},
 	title: "",
-	// workspaceId,
-	// workspaceTitle,
 };
 
 function Boards() {
@@ -36,7 +34,6 @@ function Boards() {
 	const boards = useSelector(selectBoardByWorkspace(workspaceId));
 
 	const [createBoardPopover, setCreateBoardPopover] = useState(false);
-	// const [bgPrev, setBgPrev] = useState(boardBgColors[0]);
 
 	const [newBoardDetails, setNewBoardDetails] = useState({
 		...newBoardDets,
@@ -109,7 +106,6 @@ function Boards() {
 								!e.currentTarget.contains(e.relatedTarget)
 							) {
 								setCreateBoardPopover(false);
-								// setBgPrev(boardBgColors[0]);
 							}
 						}}
 					>
@@ -117,7 +113,6 @@ function Boards() {
 						<BoardBgPopover
 							isOpen={createBoardPopover}
 							bgPrev={newBoardDetails.boardBg}
-							// setBgPrev={setBgPrev}
 							newBoardDetails={newBoardDetails}
 							handleBoardDetailsChange={handleBoardDetailsChange}
 							handleNewBoardSubmit={handleNewBoardSubmit}

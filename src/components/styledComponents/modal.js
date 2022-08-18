@@ -28,7 +28,7 @@ export const StyledModal = styled.div`
 	& > textarea {
 		font-size: 0.8rem;
 		width: calc(272px - 1em);
-		height: 90px; //calc(90px - 0.5em);
+		height: 90px;
 		padding: 0.5em;
 
 		resize: none;
@@ -74,7 +74,6 @@ export const StyledModal = styled.div`
 
 				& > div > div:not(:first-child) {
 					margin-top: 1em;
-					/* background-color: blue; */
 				}
 
 				// First, left column
@@ -111,20 +110,17 @@ export const StyledModal = styled.div`
 							font-size: 0.785rem;
 
 							&:first-child {
-								/* margin-right: 0.25em; */
 								background-color: var(--bdr-col-active);
 								color: white;
 							}
 
 							&:last-child:not(:focus) {
-								/* background-color: transparent; */
 							}
 
 							&:hover::after {
 								content: "";
 								width: 100%;
 								height: 100%;
-								/* backdrop-filter: contrast(80%); */
 								background-color: var(--bg-col-inactive);
 								z-index: 99;
 							}
@@ -143,7 +139,6 @@ export const StyledModal = styled.div`
 							background-color: var(--bg-col-inactive);
 
 							&:focus {
-								/* height: 108px; */
 								background-color: white;
 								box-shadow: inset 0 0 0 2px
 									var(--bdr-col-active);
@@ -172,7 +167,6 @@ export const StyledModal = styled.div`
 							}
 						}
 					}
-					/* width: 100%; */
 				}
 			}
 		}

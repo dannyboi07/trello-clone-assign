@@ -19,7 +19,6 @@ const StyledPopover = styled.div`
 	left: 0;
 
 	width: 310px;
-	/* min-height: 100px; */
 
 	border-radius: 0.15em;
 
@@ -112,7 +111,6 @@ const StyledInputCtn = styled.div`
 
 		border: 1px solid blue;
 		display: block;
-		/* width: 100%; */
 		flex: 2;
 		height: 100%;
 		background-color: transparent;
@@ -164,7 +162,6 @@ const StyledSearchInputCtn = styled.div`
 	transition: box-shadow 0.25s;
 
 	& > input {
-		/* display: block; */
 		font-size: 0.825rem;
 		height: 2.5em;
 		width: 100%;
@@ -178,10 +175,6 @@ const StyledSearchInputCtn = styled.div`
 	&::before {
 		content: url(${searchSvg});
 		padding: 0 0.65em;
-		/* align-self: center; */
-		/* width: 50px; */
-		/* height: 2em; */
-		/* color: black; */
 	}
 
 	&.search-focus {
@@ -203,10 +196,8 @@ const StyledButton = styled.button`
 `;
 
 const StyledCreateBoardPreview = styled.div`
-	/* height: 100px; */
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
 
 	// Preview container
 	& > div:first-child {
@@ -218,7 +209,6 @@ const StyledCreateBoardPreview = styled.div`
 		align-items: center;
 		justify-content: center;
 
-		/* background-image: url("https://www.pexels.com/photo/portrait-of-man-in-green-colors-13081380/"); */
 		background-size: cover;
 		background-repeat: no-repeat;
 
@@ -230,10 +220,6 @@ const StyledCreateBoardPreview = styled.div`
 		margin-top: 1.25em;
 		margin-bottom: 0.25em;
 	}
-
-	// BG img and color container
-
-	/* border: 1px solid red; */
 
 	& * {
 		/* border: 1px solid blue; */
@@ -248,7 +234,6 @@ const StyledCreateBoardPreview = styled.div`
 const StyledBoardBgPicker = styled.div`
 	& > div.colors-row,
 	div.imgs-row {
-		/* border: 1px solid blue; */
 		display: flex;
 		/* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
 		justify-content: space-between;
@@ -301,8 +286,6 @@ const StyledBoardBgPicker = styled.div`
 			}
 		}
 	}
-
-	/* & > div.colors-row {} */
 `;
 
 export {

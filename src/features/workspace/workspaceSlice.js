@@ -59,8 +59,6 @@ export const workspaceSlice = createSlice({
 	},
 });
 
-// workspaceboards.filter((boardId) => boardId !== action.payload);
-
 export const { addWorkspace, addBoardToWorkspace, removeBoardFromWorkspace } =
 	workspaceSlice.actions;
 

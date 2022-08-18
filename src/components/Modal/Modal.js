@@ -26,10 +26,7 @@ function Modal() {
 	const [itemNewTitle, setItemNewTitle] = useState("");
 	const [itemNewDesc, setItemNewDesc] = useState("");
 
-	// console.log(itemDetails, itemNewDesc);
-
 	useEffect(() => {
-		// console.log("eff");
 		if (modalState && modalState.type === "edit_item_title") {
 			setItemNewTitle(modalState.itemTitle);
 		} else if (modalState && modalState.type === "edit_item") {
@@ -42,7 +39,6 @@ function Modal() {
 	}, [modalState]);
 
 	useEffect(() => {
-		// console.log("effecting", itemNewDesc);
 		if (itemDetails)
 			setItemNewDesc(itemDetails.description);
 	}, [itemDetails?.description]);

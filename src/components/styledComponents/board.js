@@ -160,11 +160,9 @@ export const StyledNewBoardColumn = styled.div`
     & > div.add-list-ctn {
         position: absolute;
         background-color: var(--column-col-one);
-        /* top: -25px; */
         top: -1px;
         left: -1px;
         width: calc(100% - 3px);
-        /* width: 100%; */
         height: 75px;
 
         padding: 3px;
@@ -215,7 +213,6 @@ export const StyledNewBoardColumn = styled.div`
 `
 
 export const StyledBoardBtn = styled.button`
-	/* padding: 0.65em; */
 	display: flex;
 	align-items: center;
 

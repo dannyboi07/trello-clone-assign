@@ -27,7 +27,6 @@ function Column({
 	const [colName, setColName] = useState(colTitle);
 	const [addItemState, setAddItemState] = useState(false);
 	const [newItemTitle, setNewItemTitle] = useState("");
-	// const draggedItemRef = useRef(null);
 
 	function handleColNameChange(e) {
 		if (colName && colName !== colTitle) {
@@ -54,19 +53,6 @@ function Column({
         setNewItemTitle("");
         setAddItemState(false);
 	}
-
-	// function handleColItemDragStart(e) {
-	//     draggedItemRef.current = {
-	//         type: e.currentTarget.dataset?.type,
-	//         id: e.currentTarget.id,
-	//     }
-	// }
-	// function handleColItemDragDrop(e) {
-	//     e.preventDefault();
-	//     if (e.currentTarget.dataset?.type === draggedItemRef.current.type) {
-	//         dispatch
-	//     }
-	// }
 
 	return (
 		<StyledBoardColumn

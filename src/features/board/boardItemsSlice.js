@@ -203,66 +203,6 @@ export const boardItemsSlice = createSlice({
 	},
 });
 
-// if (colId === action.payload.fromColId) {
-// 	// console.log({
-// 	//     ...state[i].columns[j],
-// 	//     resCols[fromColIdx]: colsNewItemState
-// 	// });
-
-// 	console.log(
-// 		colId === action.payload.fromColId,
-// 		colId,
-// 		action.payload.fromColId,
-// 		colsNewItemState,
-// 	);
-
-// 	resCols = resCols.map((resCol) =>
-// 		resCol.col_id === action.payload.fromColId
-// 			? { ...resCol, items: colsNewItemState }
-// 			: resCol,
-// 	);
-
-// 	console.log(
-// 		"here",
-//         resCols,
-// 		current(resCols[0]),
-// 		current(resCols[1]),
-// 	); //resCols
-// 	// } else {
-
-//     // continue;
-// }
-////////////////
-
-// resCols[toColIdx].items = [
-// 	...resCols[toColIdx].items,
-// 	foundItem,
-// ];
-// console.log(resCols);
-// [
-// 	...resCols,
-
-// 	(resCols[toColIdx].items = [
-// 		...resCols[toColIdx].items,
-// 		foundItem,
-// 	]),
-// ];
-
-// for (
-// 	let k = 0;
-// 	k < state[i].columns[j].items.length;
-// 	k++
-// ) {
-// 	if (
-// 		state[i].columns[j].items[k].item_id ===
-// 		action.payload.itemId
-// 	) {
-// 		colsNewItemState =
-// 			state[i].columns[j].items[k];
-// 		break;
-// 	}
-// }
-
 export const {
 	addBoardColItems,
 	addBoardColumn,

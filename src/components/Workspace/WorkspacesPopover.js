@@ -6,7 +6,6 @@ import Popover from "../Popover";
 
 function WorkspacesPopover({ isOpen }) {
 	const workspaces = useSelector(selectWorkspaces);
-    // console.log(workspaces);
     
 	return (
 		<Popover className="top-left" title="Workspaces" isOpen={isOpen}>

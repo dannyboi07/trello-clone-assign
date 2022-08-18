@@ -22,8 +22,6 @@ function BoardBgPopover({
 }) {
 	const [pics, loading, error] = useFetchPics("nature");
 
-	// console.log(pics, loading, error);
-
 	return (
 		<Popover
 			className="top-left"
@@ -65,7 +63,6 @@ function BoardBgPopover({
 										className="small-bg-choice"
 										onMouseDown={(e) => e.preventDefault()}
 										onClick={(e) => {
-											// setBgPrev(e.target.value);
 											handleBoardDetailsChange(e, "img");
 										}}
 									/>
@@ -86,7 +83,6 @@ function BoardBgPopover({
 									e.preventDefault(); // Prevent parent's onBlur from firing
 								}}
 								onClick={(e) => {
-									// setBgPrev(e.target.value);
 									handleBoardDetailsChange(e, "color");
 								}}
 							/>

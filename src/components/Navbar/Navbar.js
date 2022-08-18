@@ -4,23 +4,6 @@ import RecentPopover from "./RecentPopover";
 import StarredPopover from "./StarredPopover";
 import WorkspacesPopover from "../Workspace/WorkspacesPopover";
 
-// function NavLi() {
-// 	return (
-// 		<li
-// 			id="nav-btn-1"
-// 			onMouseEnter={handleLiHoverOver}
-// 			onMouseLeave={handleLiHoverOut}
-// 			onClick={handlePopOver}
-// 			tabIndex="-1"
-// 			onBlur={handleLiOnBlur}
-// 			data-state={`${popOver[0].state ? "active" : ""}`}
-// 		>
-// 			Recent
-// 			<RecentPopover isOpen={popOver[0].state} />
-// 		</li>
-// 	);
-// }
-
 function Navbar() {
 	const [popOver, setPopOver] = useState([
 		{

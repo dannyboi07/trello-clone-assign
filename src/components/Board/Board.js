@@ -58,7 +58,6 @@ function Board() {
 				};
 			}
 		}
-		// console.log("dragstart", draggedBoardItemRef.current);
 	}
 
 	function handleBoardItemDragEnd(e) {
@@ -66,8 +65,6 @@ function Board() {
 	}
 
 	function handleBoardItemDrop(e) {
-		// console.log("dropped", draggedBoardItemRef.current, e);
-		// console.log(e, e.currentTarget.id, e.currentTarget.dataset);
 		e.preventDefault();
 
 		if (!draggedBoardItemRef.current) return;
@@ -77,7 +74,6 @@ function Board() {
 			draggedBoardItemRef.current.type === "column" &&
 			e.currentTarget.id !== draggedBoardItemRef.current.id
 		) {
-			// if (draggedBoardItemRef.current.type === "column") {
 			console.log("dispatching switch columns");
 			dispatch(
 				switchBoardColumns({
@@ -193,26 +189,3 @@ function Board() {
 }
 
 export default Board;
-
-{
-	/* <StyledBoardColumn key={boardItem.col_id}>
-							<div>
-								<textarea
-                                    
-									value={boardItem.col_title}
-									onChange={(e) => setColName(e.target.value)}
-									onBlur={() => setColName("")}
-								/>
-
-								<button>
-									<img src={dotsHoriz} alt="More" />
-								</button>
-							</div>
-
-							{boardItem.items &&
-								boardItem.items.length > 0 &&
-								boardItem.items.map((item) => (
-									<p key={item.item_id}>{item.title}</p>
-								))}
-						</StyledBoardColumn> */
-}
